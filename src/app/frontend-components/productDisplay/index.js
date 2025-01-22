@@ -1,16 +1,18 @@
 "use client"
-import React from 'react';
-import {  Minus, FileText, Truck, Package } from 'lucide-react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/select"
-import SidebarCart from '../cartSidebar/sidebarCart';
-
+import React, { useState } from 'react'
+import { Minus, FileText, Truck, Package } from 'lucide-react'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import SidebarCart from '../cartSidebar/sidebarCart'
+import { useProducts } from '@/app/hooks/getProduct'
 
 const ProductDisplay = () => {
+    const { products, isLoading, error } = useProducts()
+    const firstProduct = products[0] || {}
+    const [selectedQuantity, setSelectedQuantity] = useState("1")
 
     const mockProduct = {
         category: "GET SUPPLEMENTS",
         name: "GET ATTRACTIVE",
-        subtitle: "Supplements",
         price: 35.00,
         benefits: [
             "Promotes hair growth",
@@ -18,15 +20,30 @@ const ProductDisplay = () => {
             "Aids in skin clarity",
             "Helps to thicken hair follicles"
         ]
-    };
+    }
 
+    const handleAddToCart = () => {
+        const productToSave = {
+            image: firstProduct.fileUrls?.[0] || "https://getsupplements.com/cdn/shop/files/1733411796843-generated-label-image-0.jpg?v=1733411814%201800w%22",
+            name: mockProduct.name,
+            quantity: parseInt(selectedQuantity),
+            price: Number(firstProduct.price || mockProduct.price)
+        }
 
+        const existingCart = JSON.parse(localStorage.getItem('cart') || '[]')
+        
+        existingCart.push(productToSave)
+        
+        localStorage.setItem('cart', JSON.stringify(existingCart))
+    }
+
+    const quantityOptions = Array.from({ length: 10 }, (_, i) => (i + 1).toString())
 
     return (
         <div className="max-w-6xl mx-auto p-8 flex flex-col md:flex-row gap-12">
             <div className="md:w-1/2">
                 <img
-                    src="https://getsupplements.com/cdn/shop/files/1733411796843-generated-label-image-0.jpg?v=1733411814%201800w%22"
+                    src={firstProduct.fileUrls?.[0] || "https://getsupplements.com/cdn/shop/files/1733411796843-generated-label-image-0.jpg?v=1733411814%201800w%22"}
                     alt="Product Image"
                     className="w-full max-w-2xl rounded-2xl"
                 />
@@ -46,7 +63,7 @@ const ProductDisplay = () => {
                 </div>
 
                 <div className="text-1xl font-bold">
-                    ${mockProduct.price.toFixed(2)} USD
+                    ${Number(firstProduct.price || 0).toFixed(2)} USD
                 </div>
 
                 <div className="space-y-4">
@@ -56,14 +73,16 @@ const ProductDisplay = () => {
                         Learn more.
                     </p>
                     <span className="block text-sm font-medium">Quantity</span>
-                    <Select>
+                    <Select value={selectedQuantity} onValueChange={setSelectedQuantity}>
                         <SelectTrigger className="w-[70px]">
                             <SelectValue placeholder="1" />
                         </SelectTrigger>
                         <SelectContent>
-                            <SelectItem value="1">1</SelectItem>
-                            <SelectItem value="2">2</SelectItem>
-                            <SelectItem value="3">3</SelectItem>
+                            {quantityOptions.map((number) => (
+                                <SelectItem key={number} value={number}>
+                                    {number}
+                                </SelectItem>
+                            ))}
                         </SelectContent>
                     </Select>
                 </div>
@@ -79,38 +98,16 @@ const ProductDisplay = () => {
                     ))}
                 </ul>
                 <SidebarCart>
-                    <button className="w-full bg-yellow-500 text-white font-bold text-sm py-2 rounded-full hover:bg-yellow-500 transition-colors">
+                    <button 
+                        className="w-full bg-yellow-500 text-white font-bold text-sm py-2 rounded-full hover:bg-yellow-500 transition-colors"
+                        onClick={handleAddToCart}
+                    >
                         ADD TO CART
                     </button>
                 </SidebarCart>
-                <div className="flex justify-between items-start pt-6">
-                    <div className="flex flex-col items-center">
-                        <FileText className="w-8 h-8 text-gray-700" />
-                        <div className="text-sm mt-2 font-medium text-center">
-                            <div className="text-yellow-600">JAN 21</div>
-                            <div>Order placed</div>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col items-center">
-                        <Truck className="w-8 h-8 text-gray-700" />
-                        <div className="text-sm mt-2 font-medium text-center">
-                            <div className="text-yellow-600">JAN 22 - 23</div>
-                            <div>Order ships</div>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col items-center">
-                        <Package className="w-8 h-8 text-gray-700" />
-                        <div className="text-sm mt-2 font-medium text-center">
-                            <div className="text-yellow-600">JAN 23 - 25</div>
-                            <div>Estimated arrival</div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default ProductDisplay;
+export default ProductDisplay

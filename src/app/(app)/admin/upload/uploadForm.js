@@ -12,6 +12,8 @@ const ProductForm = () => {
     price: '',
     description: '',
   })
+  
+  const [selectedImages, setSelectedImages] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
   const handleInputChange = (e) => {
@@ -20,6 +22,11 @@ const ProductForm = () => {
       ...prev,
       [name]: value
     }))
+  }
+
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files)
+    setSelectedImages(files)
   }
 
   const handleSubmit = async (e) => {
@@ -32,10 +39,22 @@ const ProductForm = () => {
       formDataToSend.append('price', formData.price)
       formDataToSend.append('description', formData.description)
       
-      const fileInput = document.querySelector('input[type="file"]')
-      for (let file of fileInput.files) {
-        formDataToSend.append('file', file)
-      }
+      // Convert images to base64 and store them in an array
+      const imagePromises = selectedImages.map(image => 
+        new Promise((resolve, reject) => {
+          const reader = new FileReader()
+          reader.onloadend = () => {
+            resolve(reader.result)
+          }
+          reader.onerror = reject
+          reader.readAsDataURL(image)
+        })
+      )
+
+      const imageBase64Array = await Promise.all(imagePromises)
+      
+      // Append the array of base64 images as a single JSON string
+      formDataToSend.append('images', JSON.stringify(imageBase64Array))
 
       const response = await fetch('/api/admin', {
         method: 'POST',
@@ -46,12 +65,13 @@ const ProductForm = () => {
         throw new Error('Failed to create product')
       }
 
+      // Reset form
       setFormData({
         name: '',
         price: '',
         description: '',
       })
-      fileInput.value = ''
+      setSelectedImages([])
       
       alert('Product created successfully!')
 
@@ -104,10 +124,10 @@ const ProductForm = () => {
         <Label htmlFor="images">Product Images</Label>
         <Input
           id="images"
-          name="file"
           type="file"
           accept="image/*"
           multiple
+          onChange={handleImageChange}
           className="mt-1"
         />
       </div>

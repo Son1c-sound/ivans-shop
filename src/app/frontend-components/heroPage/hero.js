@@ -1,8 +1,14 @@
+"use client"
 import React from 'react';
 import Navbar from './navbar';
+import Link from 'next/link';
+import { useProducts } from '@/app/hooks/getProduct';
 
 
 const Hero = () => {
+  const { products, isLoading, error } = useProducts()
+  const firstProduct = products?.[0];
+
   const heroTexts = [
     'Get Strong',
     'Get Shredded',
@@ -47,9 +53,11 @@ const Hero = () => {
                 <p className="mb-6 md:mb-8 text-gray-800 text-sm sm:text-base">
                   FREE SHIPPING ON ORDERS $50+
                 </p>
+                <Link href={`/products/${products[0]?._id}`}>
                 <button className="bg-yellow-400 text-gray-900 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 transition-colors text-sm sm:text-base">
                   SHOP NOW
                 </button>
+              </Link>
               </div>
               <div className="w-full md:w-1/2 flex justify-center items-center mt-8 md:mt-0">
                 <div className="relative w-72 sm:w-80 md:w-96">
