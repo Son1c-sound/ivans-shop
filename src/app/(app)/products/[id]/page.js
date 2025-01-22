@@ -14,7 +14,15 @@ function ProductPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const  { createCheckoutSession } = useCheckout()
   const [isLoading, setIsLoading] = useState(false);
-
+  useEffect(() => {
+    console.log('Current ID:', id);
+    console.log('Products available:', products?.length);
+    if (products?.length > 0) {
+      console.log('First product ID for reference:', products[0]._id);
+      const foundProduct = products.find(p => p._id === id);
+      console.log('Found product:', foundProduct ? 'yes' : 'no');
+    }
+  }, [id, products]);
   const productDetails = {
     benefits: [
       "Boosts overall energy and awareness*",

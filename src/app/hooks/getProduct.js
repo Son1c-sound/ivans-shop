@@ -9,18 +9,20 @@ export const useProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const baseUrl = window.location.origin
-        const response = await fetch(`${baseUrl}/api/products`)
+        console.log('Fetching products...')
+        const response = await fetch('/api/products')
         
         if (!response.ok) {
+          console.error('Response not OK:', response.status)
           throw new Error('Failed to fetch products')
         }
 
         const data = await response.json()
+        console.log('Products fetched:', data.length)
         setProducts(data)
       } catch (err) {
-        setError(err.message)
         console.error('Fetch error:', err)
+        setError(err.message)
       } finally {
         setIsLoading(false)
       }
