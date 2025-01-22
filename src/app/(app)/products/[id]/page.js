@@ -68,7 +68,19 @@ function ProductPage() {
     );
   }
 
-  const basePrice = Number(product.price) || 0
+  if (!product) {
+    return (
+      <>
+        <Navbar />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex justify-center items-center min-h-screen">
+          <Loader2 className="w-8 h-8 animate-spin" />
+        </div>
+        <Footer />
+      </>
+    );
+  }
+
+  const basePrice = Number(product.price)
   const subscribePrice = basePrice * 0.8 
   const oneTimePrice = basePrice
   
