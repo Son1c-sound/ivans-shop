@@ -40,7 +40,7 @@ const ProductDisplay = () => {
     const quantityOptions = Array.from({ length: 10 }, (_, i) => (i + 1).toString())
 
     return (
-        <div className="max-w-6xl mx-auto p-8 flex flex-col md:flex-row gap-12">
+        <div className="max-w-6xl mt-10 mb-10 mx-auto p-8 flex flex-col md:flex-row gap-12">
             <div className="md:w-1/2">
                 <img
                     src={firstProduct.fileUrls?.[0] || "https://getsupplements.com/cdn/shop/files/1733411796843-generated-label-image-0.jpg?v=1733411814%201800w%22"}

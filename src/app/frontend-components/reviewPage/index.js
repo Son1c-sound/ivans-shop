@@ -10,7 +10,7 @@ import {
 const testimonials = [
   {
     id: 1,
-    content: "I've noticed a huge difference in my skin after just a few weeks. It's clearer, smoother, and has a healthier glow. My confidence is through the roof!",
+    content: "I've noticed a huge difference in my skin after just a few weeks. It's clearer, smoother, and has a healthier glow. My confidence is through the roof! ",
     author: "Jake",
     age: 23,
   },
@@ -43,18 +43,18 @@ const TestimonialSlider = () => {
   }, [api]);
 
   return (
-    <div className="w-full bg-white">
-      <div className="max-w-10xl mx-auto p-12">
-        <h2 className="text-2xl font-bold mb-8">In Your Own Words —</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="relative overflow-hidden rounded-2xl bg-[#40B7C8] h-80">
+    <div className="w-full bg-white mb-10 mt-10">
+      <div className="max-w-6xl mx-auto p-8">
+        <h2 className="text-3xl font-semibold mb-8">In Your Own Words —</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="relative overflow-hidden rounded-xl bg-[#40B7C8] ">
             <img
               src="https://getsupplements.com/cdn/shop/files/getsupp_herosproduct_banner.jpg?v=1726233020"
               alt="Product bottles pattern"
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="md:col-span-2 h-80">
+          <div className="md:col-span-2 h-30">
             <Carousel
               setApi={setApi}
               opts={{
@@ -65,8 +65,8 @@ const TestimonialSlider = () => {
             >
               <CarouselContent className="-ml-2 md:-ml-4 h-full">
                 {testimonials.map((testimonial) => (
-                  <CarouselItem key={testimonial.id} className="basis-full h-full">
-                    <div className="bg-white rounded-2xl p-14 shadow-sm border border-gray-400 h-full flex flex-col justify-between">
+                  <CarouselItem key={testimonial.id} className="  pl-2 md:pl-4">
+                    <div className="bg-white rounded-xl p-12  shadow-md border border-gray-200 h-30 flex flex-col justify-between">
                       <p className="text-gray-800 text-lg mb-6 leading-relaxed">
                         {testimonial.content}
                       </p>
@@ -77,7 +77,7 @@ const TestimonialSlider = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <div className="flex justify-center gap-2 mt-6">
+              <div className="flex justify-center gap-2 mt-4">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
