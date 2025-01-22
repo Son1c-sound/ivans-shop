@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
-import { ShoppingCart, User, Menu, X } from 'lucide-react';
+import { ShoppingCart,  Menu, X } from 'lucide-react';
+import SidebarCart from '../cartSidebar/sidebarCart';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,9 +20,7 @@ const Navbar = () => {
       <nav className="bg-white p-4 border-b relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Left section */}
             <div className="flex items-center">
-              {/* Mobile menu button */}
               <button
                 className="md:hidden text-gray-700 hover:text-gray-900"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -32,7 +31,6 @@ const Navbar = () => {
                   <Menu className="h-6 w-6" />
                 )}
               </button>
-              {/* Desktop Navigation */}
               <div className="hidden md:flex space-x-8 ml-8">
                 {navLinks.map((link) => (
                   <a
@@ -48,16 +46,8 @@ const Navbar = () => {
             <div className="text-xl font-bold tracking-wider text-center absolute left-1/2 transform -translate-x-1/2">
               GET SUPPLEMENTS
             </div>
-            <div className="flex items-center space-x-6">
-              <button className="text-gray-700 hover:text-gray-900">
-                <User className="h-6 w-6" />
-              </button>
-              <button className="text-gray-700 hover:text-gray-900 relative">
-                <ShoppingCart className="h-6 w-6" />
-                <span className="absolute -top-2 -right-2 bg-yellow-400 text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  0
-                </span>
-              </button>
+            <div className="flex items-center space-x-6 cursor-pointer">
+            <SidebarCart><ShoppingCart className="h-6 w-6" /></SidebarCart>
             </div>
           </div>
           {isMenuOpen && (

@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './navbar';
-import ReviewPage from '../reviewPage/index';
+
 
 const Hero = () => {
   const heroTexts = [

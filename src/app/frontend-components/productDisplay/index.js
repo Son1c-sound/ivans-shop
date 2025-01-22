@@ -1,16 +1,11 @@
 "use client"
 import React from 'react';
-import { Plus, Minus, FileText, Truck, Package } from 'lucide-react';
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
+import {  Minus, FileText, Truck, Package } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/select"
+import SidebarCart from '../cartSidebar/sidebarCart';
+
 
 const ProductDisplay = () => {
-    const [quantity, setQuantity] = React.useState(1);
 
     const mockProduct = {
         category: "GET SUPPLEMENTS",
@@ -25,8 +20,7 @@ const ProductDisplay = () => {
         ]
     };
 
-    const increment = () => setQuantity(prev => prev + 1);
-    const decrement = () => setQuantity(prev => prev > 1 ? prev - 1 : 1);
+
 
     return (
         <div className="max-w-6xl mx-auto p-8 flex flex-col md:flex-row gap-12">
@@ -63,7 +57,7 @@ const ProductDisplay = () => {
                     </p>
                     <span className="block text-sm font-medium">Quantity</span>
                     <Select>
-                        <SelectTrigger className="w-[150px]">
+                        <SelectTrigger className="w-[70px]">
                             <SelectValue placeholder="1" />
                         </SelectTrigger>
                         <SelectContent>
@@ -73,7 +67,6 @@ const ProductDisplay = () => {
                         </SelectContent>
                     </Select>
                 </div>
-
 
                 <ul className="space-y-4">
                     {mockProduct.benefits.map((benefit, index) => (
@@ -85,11 +78,11 @@ const ProductDisplay = () => {
                         </li>
                     ))}
                 </ul>
-
-                <button className="w-full bg-yellow-500 text-white  font-bold text-sm py-2 rounded-full hover:bg-yellow-500 transition-colors">
-                    ADD TO CART
-                </button>
-
+                <SidebarCart>
+                    <button className="w-full bg-yellow-500 text-white font-bold text-sm py-2 rounded-full hover:bg-yellow-500 transition-colors">
+                        ADD TO CART
+                    </button>
+                </SidebarCart>
                 <div className="flex justify-between items-start pt-6">
                     <div className="flex flex-col items-center">
                         <FileText className="w-8 h-8 text-gray-700" />
