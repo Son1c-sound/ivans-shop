@@ -1,28 +1,19 @@
 "use client"
 import { useProducts } from '@/app/hooks/getProduct'
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'next/navigation'
+import React, { useState } from 'react'
 import Navbar from '@/app/frontend-components/heroPage/navbar'
 import Footer from '@/app/frontend-components/heroPage/footer'
 import { useCheckout } from '@/app/hooks/checkoutSession'
 import { Loader2 } from 'lucide-react'
 
-function ProductPage() {
-  const { id } = useParams();
+function ProductPage({ params }) {
+  const { id } = params;
   const { products, error } = useProducts();
   const [selectedPurchaseType, setSelectedPurchaseType] = useState('subscribe');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const  { createCheckoutSession } = useCheckout()
   const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    console.log('Current ID:', id);
-    console.log('Products available:', products?.length);
-    if (products?.length > 0) {
-      console.log('First product ID for reference:', products[0]._id);
-      const foundProduct = products.find(p => p._id === id);
-      console.log('Found product:', foundProduct ? 'yes' : 'no');
-    }
-  }, [id, products]);
+
   const productDetails = {
     benefits: [
       "Boosts overall energy and awareness*",
