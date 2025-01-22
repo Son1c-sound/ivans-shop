@@ -1,6 +1,6 @@
 "use client"
 import { useProducts } from '@/app/hooks/getProduct'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import Navbar from '@/app/frontend-components/heroPage/navbar'
 import Footer from '@/app/frontend-components/heroPage/footer'
