@@ -10,7 +10,6 @@ export async function POST(req) {
   try {
     const { items, successUrl, cancelUrl } = await req.json();
 
-    // Check if required parameters are missing
     if (!items || !Array.isArray(items)) {
       console.error('Error: "items" parameter is missing or not an array.');
       return NextResponse.json(
@@ -35,7 +34,6 @@ export async function POST(req) {
       );
     }
 
-    // Map items to Stripe line items
     const lineItems = items.map((item, index) => {
       if (!item.name || !item.price || !item.quantity) {
         console.error(`Error: Missing required fields in item at index ${index}.`, item);

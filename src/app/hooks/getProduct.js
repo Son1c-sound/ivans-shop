@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect } from 'react'
 
 export const useProducts = () => {
@@ -10,7 +9,8 @@ export const useProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('/api/products')
+        const baseUrl = window.location.origin
+        const response = await fetch(`${baseUrl}/api/products`)
         
         if (!response.ok) {
           throw new Error('Failed to fetch products')
@@ -20,6 +20,7 @@ export const useProducts = () => {
         setProducts(data)
       } catch (err) {
         setError(err.message)
+        console.error('Fetch error:', err)
       } finally {
         setIsLoading(false)
       }
