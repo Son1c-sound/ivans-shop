@@ -7,12 +7,12 @@ import { useCheckout } from '@/app/hooks/checkoutSession'
 import { Loader2 } from 'lucide-react'
 
 function ProductPage({ params }) {
-  const { id } = params;
-  const { products, error } = useProducts();
-  const [selectedPurchaseType, setSelectedPurchaseType] = useState('subscribe');
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { id } = params
+  const { products } = useProducts()
+  const [selectedPurchaseType, setSelectedPurchaseType] = useState('subscribe')
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const  { createCheckoutSession } = useCheckout()
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
   const productDetails = {
     benefits: [
@@ -51,20 +51,20 @@ function ProductPage({ params }) {
         description: "Encourages comfort and relaxation in muscles for improved daily function."
       }
     ],
-  };
+  }
 
 
-  const product = products?.find(p => p._id === id);
-  if (!product) return <div>Product not found</div>;
+  const product = products?.find(p => p._id === id)
+  if (!product) return <div>Loading...</div>
 
-  const basePrice = Number(product.price) || 0;
-  const subscribePrice = basePrice * 0.8; 
-  const oneTimePrice = basePrice;
+  const basePrice = Number(product.price) || 0
+  const subscribePrice = basePrice * 0.8 
+  const oneTimePrice = basePrice
   
-  const currentPrice = selectedPurchaseType === 'subscribe' ? subscribePrice : oneTimePrice;
+  const currentPrice = selectedPurchaseType === 'subscribe' ? subscribePrice : oneTimePrice
 
   const handleBoth = async () => {
-    setIsLoading(true);
+    setIsLoading(true)
     
     try {
       const productToSave = {
@@ -72,19 +72,19 @@ function ProductPage({ params }) {
         name: product.name,
         quantity: 1,
         price: currentPrice
-      };
+      }
 
-      const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
-      existingCart.push(productToSave);
-      localStorage.setItem('cart', JSON.stringify(existingCart));
+      const existingCart = JSON.parse(localStorage.getItem('cart') || '[]')
+      existingCart.push(productToSave)
+      localStorage.setItem('cart', JSON.stringify(existingCart))
       
-      await createCheckoutSession();
+      await createCheckoutSession()
     } catch (error) {
-      console.error('Checkout error:', error);
+      console.error('Checkout error:', error)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <>
@@ -265,4 +265,4 @@ function ProductPage({ params }) {
   )
 }
 
-export default ProductPage;
+export default ProductPage
