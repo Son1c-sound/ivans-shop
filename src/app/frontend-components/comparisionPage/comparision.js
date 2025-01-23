@@ -4,7 +4,7 @@ import { comparisonData } from './data';
 const ComparisonSection = () => {
   return (
     <div className="w-full max-w-6xl mx-auto p-6 mt-10 mb-10">
-      <h1 className="text-3xl  text-center mb-12">{comparisonData.title}</h1>
+      <h1 className="text-3xl  text-center mb-12 font-bold">{comparisonData.title}</h1>
       
       <div className="grid md:grid-cols-2 gap-6">
         {comparisonData.columns.map((column, columnIndex) => {
@@ -14,7 +14,7 @@ const ComparisonSection = () => {
               key={columnIndex}
               className={`${column.bgColor} p-6 rounded-lg`}
             >
-              <h2 className="text-xl mainTitle  text-center mb-6">
+              <h2 className="text-xl font-bold  text-center mb-6">
                 {column.title}
               </h2>
               
@@ -35,7 +35,7 @@ const ComparisonSection = () => {
       </div>
 
       <div className="flex justify-center mt-8">
-        <button className="bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors duration-200">
+        <button className="bg-black font-bold text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors duration-200">
           Get Started
         </button>
       </div>

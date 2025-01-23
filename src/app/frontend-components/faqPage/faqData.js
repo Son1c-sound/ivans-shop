@@ -22,5 +22,11 @@ export const faqData = [
     title: "Quality Assurance",
     content: "Every batch undergoes rigorous testing in our certified facilities. We maintain strict quality control standards throughout the manufacturing process.",
     source: "Quality Control Documentation"
+  },
+  {
+    id: 5,
+    title: "Storage Instructions",
+    content: "Store in a cool, dry place below 25°C/77°F. Keep away from direct sunlight and moisture. Always seal the container tightly after use.",
+    source: "Product Safety Guidelines"
   }
 ];
