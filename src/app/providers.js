@@ -2,9 +2,12 @@
 import posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
 
+const postKey = process.env.NEXT_PUBLIC_POSTHOG_KEY
+const publicKey = process.env.NEXT_PUBLIC_POSTHOG_HOST
+
 if (typeof window !== 'undefined') {
-  posthog.init('phc_n4PKYlSgGiw1EssscAr9k5BLL3uuo81W8UOmc77Zh9Z', {
-    api_host: 'https://eu.i.posthog.com',
+  posthog.init(postKey, {
+    api_host: publicKey,
     person_profiles: 'identified_only', 
   })
 }
