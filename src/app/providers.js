@@ -3,8 +3,8 @@ import posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
 
 if (typeof window !== 'undefined') {
-  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
-    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+  posthog.init('phc_n4PKYlSgGiw1EssscAr9k5BLL3uuo81W8UOmc77Zh9Z', {
+    api_host: 'https://eu.i.posthog.com',
     person_profiles: 'identified_only', 
   })
 }
