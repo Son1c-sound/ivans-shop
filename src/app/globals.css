@@ -11,6 +11,7 @@
 * {
   font-family: var(--font-montserrat);
   font-weight: 400;
+  scroll-behavior: smooth;
 }
 
 

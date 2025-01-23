@@ -1,18 +1,17 @@
 "use client"
 import React, { useState } from 'react'
-import { Minus, FileText, Truck, Package } from 'lucide-react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import SidebarCart from '../cartSidebar/sidebarCart'
 import { useProducts } from '@/app/hooks/getProduct'
 
 const ProductDisplay = () => {
-    const { products, isLoading, error } = useProducts()
+    const { products  } = useProducts()
     const firstProduct = products[0] || {}
     const [selectedQuantity, setSelectedQuantity] = useState("1")
 
     const mockProduct = {
         category: "GET SUPPLEMENTS",
-        name: "GET ATTRACTIVE",
+        name: firstProduct.name,
         price: 35.00,
         benefits: [
             "Promotes hair growth",
@@ -40,7 +39,7 @@ const ProductDisplay = () => {
     const quantityOptions = Array.from({ length: 10 }, (_, i) => (i + 1).toString())
 
     return (
-        <div className="max-w-6xl mt-10 mb-10 mx-auto p-8 flex flex-col md:flex-row gap-12">
+        <div className="max-w-6xl mt-10 mb-10 mx-auto p-8 flex flex-col md:flex-row gap-12" id='SHOP'>
             <div className="md:w-1/2">
                 <img
                     src={firstProduct.fileUrls?.[0] || "https://getsupplements.com/cdn/shop/files/1733411796843-generated-label-image-0.jpg?v=1733411814%201800w%22"}

@@ -7,7 +7,6 @@ import { useProducts } from '@/app/hooks/getProduct';
 
 const Hero = () => {
   const { products, isLoading, error } = useProducts()
-  const firstProduct = products?.[0];
 
   const heroTexts = [
     'Get Strong',

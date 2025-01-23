@@ -7,9 +7,9 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: 'SHOP', href: '/' },
-    { name: 'FAQ', href: '#' },
-    { name: 'CONTACTS', href: '#' }
+    { name: 'SHOP', href: '#SHOP' },
+    { name: 'FAQ', href: '#FAQ' },
+    { name: 'CONTACTS', href: '#CONTACT' }
   ];
 
   return (
@@ -44,7 +44,9 @@ const Navbar = () => {
               </div>
             </div>
             <div className="text-xl mainTitle  tracking-wider text-center absolute left-1/2 transform -translate-x-1/2">
+            <a href='/' className='font-bold mainTitle'>
               GET SUPPLEMENTS
+              </a>
             </div>
             <div className="flex items-center space-x-6 cursor-pointer">
             <SidebarCart><ShoppingCart className="h-6 w-6" /></SidebarCart>

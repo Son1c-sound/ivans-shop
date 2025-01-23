@@ -12,7 +12,7 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-6 mb-10 mt-10">
+    <div className="w-full max-w-6xl mx-auto p-6 mb-10 mt-10" id='FAQ'>
       <div className="text-center mb-8">
         <h2 className="text-xs uppercase tracking-wider mb-2">FEEL THE DIFFERENCE</h2>
         <h1 className="text-2xl md:text-3xl font-semibold">Science behind this product</h1>

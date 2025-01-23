@@ -19,23 +19,26 @@ export const useCheckout = () => {
 
     try {
       const latestCartItems = JSON.parse(localStorage.getItem('cart') || '[]');
-      
+
       if (!latestCartItems || latestCartItems.length === 0) {
         throw new Error('Cart is empty');
       }
 
-      const response = await fetch("/api/stripe", {
-        method: "POST",
+      // Add tax directly to each item's price
+      const itemsWithTax = latestCartItems.map((item) => ({
+        name: item.name,
+        images: [item.image],
+        price: (parseFloat(item.price) * 1.07).toFixed(2), // Tax included price
+        quantity: item.quantity,
+      }));
+
+      const response = await fetch('/api/stripe', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          items: latestCartItems.map((item) => ({
-            name: item.name,
-            images: [item.image],
-            price: item.price,
-            quantity: item.quantity,
-          })),
+          items: itemsWithTax,
           successUrl: `${window.location.origin}/success`,
           cancelUrl: `${window.location.origin}/cancel`,
         }),
@@ -45,10 +48,10 @@ export const useCheckout = () => {
 
       if (response.ok) {
         const stripe = await stripePromise;
-        const { error } = await stripe.redirectToCheckout({ 
-          sessionId: data.sessionId 
+        const { error } = await stripe.redirectToCheckout({
+          sessionId: data.sessionId,
         });
-        
+
         if (error) {
           throw new Error(error.message);
         }
@@ -56,7 +59,7 @@ export const useCheckout = () => {
         throw new Error(data.error || 'Failed to create checkout session');
       }
     } catch (error) {
-      console.error("Error creating checkout session:", error);
+      console.error('Error creating checkout session:', error);
       throw error;
     } finally {
       setIsLoading(false);

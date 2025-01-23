@@ -10,30 +10,6 @@ export async function POST(req) {
   try {
     const { items, successUrl, cancelUrl } = await req.json();
 
-    if (!items || !Array.isArray(items)) {
-      console.error('Error: "items" parameter is missing or not an array.');
-      return NextResponse.json(
-        { error: 'The "items" parameter is required and must be an array.' },
-        { status: 400 }
-      );
-    }
-
-    if (!successUrl) {
-      console.error('Error: "successUrl" parameter is missing.');
-      return NextResponse.json(
-        { error: 'The "successUrl" parameter is required.' },
-        { status: 400 }
-      );
-    }
-
-    if (!cancelUrl) {
-      console.error('Error: "cancelUrl" parameter is missing.');
-      return NextResponse.json(
-        { error: 'The "cancelUrl" parameter is required.' },
-        { status: 400 }
-      );
-    }
-
     const lineItems = items.map((item, index) => {
       if (!item.name || !item.price || !item.quantity) {
         console.error(`Error: Missing required fields in item at index ${index}.`, item);
@@ -45,7 +21,7 @@ export async function POST(req) {
           currency: 'usd',
           product_data: {
             name: item.name,
-            description: item.description || 'No description provided.',
+            description: 'Hair, Skin and Nails Essentials.',
             images: item.images || [],
           },
           unit_amount: Math.round(parseFloat(item.price) * 100),
@@ -60,24 +36,22 @@ export async function POST(req) {
       mode: 'payment',
       success_url: successUrl,
       cancel_url: cancelUrl,
+
     });
 
-    // Respond with the session ID
+
     return NextResponse.json({ sessionId: session.id }, { status: 200 });
   } catch (error) {
     console.error('Error creating Stripe session:', error);
-
-    // Return detailed error messages if available
     if (error instanceof Stripe.errors.StripeError) {
       return NextResponse.json(
         { error: `Stripe error: ${error.message}` },
-        { status: error.statusCode || 500 }
-      );
+      )
     }
 
     return NextResponse.json(
       { error: `Internal Server Error: ${error.message}` },
       { status: 500 }
-    );
+    )
   }
 }

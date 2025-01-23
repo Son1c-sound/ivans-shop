@@ -19,10 +19,7 @@ function ProductPage({ params }) {
   if (!product) return <div>Loading...</div>
 
   const basePrice = Number(product.price) || 0
-  const subscribePrice = basePrice * 0.8 
-  const oneTimePrice = basePrice
-  
-  const currentPrice = selectedPurchaseType === 'subscribe' ? subscribePrice : oneTimePrice
+  const currentPrice = basePrice
 
   const handleBoth = async () => {
     setIsLoading(true)
@@ -74,7 +71,7 @@ function ProductPage({ params }) {
             ))}
           </div>
           <div className="text-2xl ">
-            ${Number(currentPrice).toFixed(2)} USD
+            ${Number(basePrice).toFixed(2)} USD
           </div>
           <div className="space-y-4">
             <div className="text-sm text-gray-600">
@@ -82,23 +79,6 @@ function ProductPage({ params }) {
             </div>
             <div className="space-y-3">
               <p className="">Purchase options</p>
-              <label className="flex items-center justify-between p-4 border rounded-lg cursor-pointer">
-                <div className="flex items-center gap-3">
-                  <input type="radio" name="purchase-type" value="subscribe" checked={selectedPurchaseType === 'subscribe'} onChange={(e) => setSelectedPurchaseType(e.target.value)} className="h-4 w-4 text-yellow-400"/>
-                <div>
-                    <div className="">Subscribe & save <span className="text-sm bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">SAVE 20%</span></div>
-                    <div className="text-sm text-gray-500">Deliver every month</div>
-                  </div>
-                </div>
-                <div className="">${Number(subscribePrice).toFixed(2)}</div>
-              </label>
-              <label className="flex items-center justify-between p-4 border rounded-lg cursor-pointer">
-                <div className="flex items-center gap-3">
-                  <input type="radio" name="purchase-type" value="one-time" checked={selectedPurchaseType === 'one-time'} onChange={(e) => setSelectedPurchaseType(e.target.value)} className="h-4 w-4 text-yellow-400"/>
-                  <div className="">One-time purchase</div>
-                </div>
-                <div className="">${Number(oneTimePrice).toFixed(2)}</div>
-              </label>
             </div>
           </div>
           <button onClick={handleBoth} disabled={isLoading} className={`w-full bg-yellow-400 text-gray-900 py-3 rounded-full font-semibold transition-colors ${isLoading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-yellow-500'}`} >
