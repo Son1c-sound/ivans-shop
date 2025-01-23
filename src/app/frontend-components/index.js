@@ -16,7 +16,6 @@ function index() {
     <FAQSection />
     <ComparisonSection />
     <Footer />
-
     </>
   )
 }

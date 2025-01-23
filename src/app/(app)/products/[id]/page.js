@@ -65,7 +65,7 @@ function ProductPage({ params }) {
           </div>
         </div>
         <div className="space-y-6">
-          <h1 className="text-4xl font-bold">{product.name}</h1>
+          <h1 className="text-4xl ">{product.name}</h1>
           <div className="flex flex-wrap gap-2">
             {productDetails.features.map((feature, index) => (
               <span key={index} className="px-3 py-1 bg-gray-100 rounded-full text-sm">
@@ -73,7 +73,7 @@ function ProductPage({ params }) {
               </span>
             ))}
           </div>
-          <div className="text-2xl font-bold">
+          <div className="text-2xl ">
             ${Number(currentPrice).toFixed(2)} USD
           </div>
           <div className="space-y-4">
@@ -81,23 +81,23 @@ function ProductPage({ params }) {
               Pay over time for orders over $35.00 with Shop Pay
             </div>
             <div className="space-y-3">
-              <p className="font-medium">Purchase options</p>
+              <p className="">Purchase options</p>
               <label className="flex items-center justify-between p-4 border rounded-lg cursor-pointer">
                 <div className="flex items-center gap-3">
                   <input type="radio" name="purchase-type" value="subscribe" checked={selectedPurchaseType === 'subscribe'} onChange={(e) => setSelectedPurchaseType(e.target.value)} className="h-4 w-4 text-yellow-400"/>
                 <div>
-                    <div className="font-medium">Subscribe & save <span className="text-sm bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">SAVE 20%</span></div>
+                    <div className="">Subscribe & save <span className="text-sm bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">SAVE 20%</span></div>
                     <div className="text-sm text-gray-500">Deliver every month</div>
                   </div>
                 </div>
-                <div className="font-medium">${Number(subscribePrice).toFixed(2)}</div>
+                <div className="">${Number(subscribePrice).toFixed(2)}</div>
               </label>
               <label className="flex items-center justify-between p-4 border rounded-lg cursor-pointer">
                 <div className="flex items-center gap-3">
                   <input type="radio" name="purchase-type" value="one-time" checked={selectedPurchaseType === 'one-time'} onChange={(e) => setSelectedPurchaseType(e.target.value)} className="h-4 w-4 text-yellow-400"/>
-                  <div className="font-medium">One-time purchase</div>
+                  <div className="">One-time purchase</div>
                 </div>
-                <div className="font-medium">${Number(oneTimePrice).toFixed(2)}</div>
+                <div className="">${Number(oneTimePrice).toFixed(2)}</div>
               </label>
             </div>
           </div>
@@ -116,7 +116,7 @@ function ProductPage({ params }) {
           <div className="space-y-4 pt-6">
             <details className="group">
               <summary className="flex justify-between items-center cursor-pointer list-none">
-                <span className="font-medium">BENEFITS</span>
+                <span className="">BENEFITS</span>
                 <span className="transform group-open:rotate-180">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
@@ -133,7 +133,7 @@ function ProductPage({ params }) {
                 <div className="mt-6 space-y-4">
                   {productDetails.benefitsDetail.map((detail, index) => (
                     <div key={index} className="space-y-1">
-                      <h4 className="font-medium">{detail.title}</h4>
+                      <h4 className="">{detail.title}</h4>
                       <p className="text-sm text-gray-600">{detail.description}</p>
                     </div>
                   ))}
@@ -142,7 +142,7 @@ function ProductPage({ params }) {
             </details>
             <details className="group">
               <summary className="flex justify-between items-center cursor-pointer list-none">
-                <span className="font-medium">INGREDIENTS</span>
+                <span className="">INGREDIENTS</span>
                 <span className="transform group-open:rotate-180">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
@@ -160,7 +160,7 @@ function ProductPage({ params }) {
             </details>
             <details className="group">
               <summary className="flex justify-between items-center cursor-pointer list-none">
-                <span className="font-medium">DIRECTIONS</span>
+                <span className="">DIRECTIONS</span>
                 <span className="transform group-open:rotate-180">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
@@ -173,7 +173,7 @@ function ProductPage({ params }) {
             </details>
             <details className="group">
               <summary className="flex justify-between items-center cursor-pointer list-none">
-                <span className="font-medium">WARNING</span>
+                <span className="">WARNING</span>
                 <span className="transform group-open:rotate-180">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />

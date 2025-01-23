@@ -44,7 +44,7 @@ const Hero = () => {
                     Based on 194 reviews
                   </p>
                 </div>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6 text-gray-900">
+                <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl  mb-4 md:mb-6 text-gray-900">
                   Start Your <br/> Hero&apos;s Journey Today
                 </h1>
                 <p className="text-lg sm:text-xl mb-6 md:mb-8 text-gray-800">

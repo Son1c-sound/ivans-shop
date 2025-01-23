@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="w-full font-bold bg-teal-600 text-white text-center py-3 text-md">
+      <div className="w-full  bg-teal-600 text-white text-center py-3 text-md">
         Welcome to our store!
       </div>
       <nav className="bg-white p-4 border-b relative">
@@ -36,14 +36,14 @@ const Navbar = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="text-gray-700 hover:text-gray-900 font-medium"
+                    className="text-gray-700 hover:text-gray-900 "
                   >
                     {link.name}
                   </a>
                 ))}
               </div>
             </div>
-            <div className="text-xl font-bold tracking-wider text-center absolute left-1/2 transform -translate-x-1/2">
+            <div className="text-xl mainTitle  tracking-wider text-center absolute left-1/2 transform -translate-x-1/2">
               GET SUPPLEMENTS
             </div>
             <div className="flex items-center space-x-6 cursor-pointer">
@@ -57,7 +57,7 @@ const Navbar = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="text-gray-700 hover:text-gray-900 font-medium"
+                    className="text-gray-700 hover:text-gray-900 "
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}

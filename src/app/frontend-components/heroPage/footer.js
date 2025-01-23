@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Newsletter Section */}
         <div className="space-y-4">
-          <h3 className="font-medium text-lg text-gray-900">
+          <h3 className=" text-lg text-gray-900">
             Join our newsletter folks
           </h3>
           <p className="text-sm text-gray-600">
@@ -20,13 +20,13 @@ const Footer = () => {
               placeholder="Email"
               className="flex-1 p-2 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
             />
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors">
-              →
+            <button className="bg-gray-500 text-white px-4 py-2 rounded transition-colors">
+              Submit
             </button>
           </div>
         </div>
         <div className="space-y-4">
-          <h3 className="font-medium text-lg text-gray-900">Info</h3>
+          <h3 className=" text-lg text-gray-900">Info</h3>
           <ul className="space-y-2">
             {[
               "Contact Us",
@@ -60,7 +60,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto mt-8 pt-8 border-t border-gray-200">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex gap-4 items-center">
-            <h3 className="text-sm font-medium text-gray-900">Our socials</h3>
+            <h3 className="text-sm  text-gray-900">Our socials</h3>
             <div className="flex gap-4">
               <a
                 href="#"

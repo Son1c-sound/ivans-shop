@@ -22,7 +22,7 @@
 
 //   return (
 //     <div className="w-full max-w-6xl mx-auto px-4 mt-10 mb-10">
-//       <h1 className="text-4xl font-bold mb-8">Explore Collections</h1>
+//       <h1 className="text-4xl  mb-8">Explore Collections</h1>
       
 //       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 //         {collections.map((collection) => (

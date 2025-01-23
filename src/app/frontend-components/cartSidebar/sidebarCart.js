@@ -56,7 +56,7 @@ const SidebarCart = ({ children }) => {
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <div className="flex justify-between">
-                                        <h3 className="font-medium text-sm">{item.name}</h3>
+                                        <h3 className=" text-sm">{item.name}</h3>
                                         <Button
                                             variant="ghost"
                                             size="sm"
@@ -68,7 +68,7 @@ const SidebarCart = ({ children }) => {
                                     </div>
                                     <div className="mt-1 flex items-center justify-between">
                                         <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
-                                        <p className="text-sm font-medium">${item.price.toFixed(2)}</p>
+                                        <p className="text-sm ">${item.price.toFixed(2)}</p>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@ const SidebarCart = ({ children }) => {
                          
                         <div className="space-y-2">
                             <Button
-                                className="w-full bg-yellow-500/90 shadow-none hover:bg-yellow-400 text-white rounded-xl p-5 font-bold text-md"
+                                className="w-full bg-yellow-500/90 shadow-none hover:bg-yellow-400 text-white rounded-xl p-5  text-md"
                                 onClick={createCheckoutSession}
                                 disabled={isLoading || cartItems.length === 0}
                             >

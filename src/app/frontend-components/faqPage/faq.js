@@ -39,7 +39,7 @@ const FAQSection = () => {
                   className="w-full px-1 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
                   onClick={() => toggleFAQ(index)}
                 >
-                  <span className="font-medium text-md">{faq.title}</span>
+                  <span className=" text-md">{faq.title}</span>
                   <span className="transform transition-transform duration-200">
                     {openIndex === index ? (
                       <ChevronUp className="w-5 h-5 text-gray-500" />
