@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="w-full  bg-teal-600 text-white text-center py-3 text-md">
+      <div className="w-full  bg-green-600 text-white text-center py-3 text-md">
         Welcome to our store!
       </div>
       <nav className="bg-white p-4 border-b relative">

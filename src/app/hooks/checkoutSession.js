@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe('pk_test_51PfDj3HE0HInGjDUeHdMZMffSz3ncjDPqdONzb4snIO6qD67gffIhZgtOk6HYHY01gaQbdKtx98vl5jeiIJRoaFc00jgmt0iEw');
+const stripePromise = loadStripe('pk_live_51QkB4kIKHLOOWo2tfqghpdrOBM99TklXxgkrbpodXxhm1AlVXBOExy2AFVQ0Bm0WimTB9jUGKXdOTjZQtfdZiqsL00RIYM86ZT');
 
 export const useCheckout = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,11 +24,10 @@ export const useCheckout = () => {
         throw new Error('Cart is empty');
       }
 
-      // Add tax directly to each item's price
       const itemsWithTax = latestCartItems.map((item) => ({
         name: item.name,
         images: [item.image],
-        price: (parseFloat(item.price) * 1.07).toFixed(2), // Tax included price
+        price: (parseFloat(item.price) * 1.07).toFixed(2),
         quantity: item.quantity,
       }));
 
@@ -55,7 +54,7 @@ export const useCheckout = () => {
         if (error) {
           throw new Error(error.message);
         }
-        
+
       } else {
         throw new Error(data.error || 'Failed to create checkout session');
       }

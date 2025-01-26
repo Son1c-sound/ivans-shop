@@ -98,7 +98,7 @@ const ProductDisplay = () => {
                 </ul>
                 <SidebarCart>
                     <button 
-                        className="w-full bg-yellow-500 text-white  text-sm py-2 rounded-full hover:bg-yellow-500 transition-colors"
+                        className="w-full bg-green-500 text-white  text-sm py-2 rounded-full hover:bg-green-500 transition-colors"
                         onClick={handleAddToCart}
                     >
                         ADD TO CART

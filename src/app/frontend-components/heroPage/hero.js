@@ -53,7 +53,7 @@ const Hero = () => {
                   FREE SHIPPING ON ORDERS $50+
                 </p>
                 <Link href={`/products/${products[0]?._id}`}>
-                <button className="bg-yellow-400 text-gray-900 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 transition-colors text-sm sm:text-base">
+                <button className="bg-green-500 text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-green-400 transition-colors text-sm sm:text-base">
                   SHOP NOW
                 </button>
               </Link>
