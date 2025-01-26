@@ -55,6 +55,7 @@ export const useCheckout = () => {
         if (error) {
           throw new Error(error.message);
         }
+        
       } else {
         throw new Error(data.error || 'Failed to create checkout session');
       }
